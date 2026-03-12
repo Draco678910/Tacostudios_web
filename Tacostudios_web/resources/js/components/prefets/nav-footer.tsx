@@ -5,7 +5,7 @@ import {
     SidebarMenu,
     SidebarMenuButton,
     SidebarMenuItem,
-} from '@/components/ui/sidebar';
+} from '@/components/prefets/ui/sidebar';
 import { toUrl } from '@/lib/utils';
 import type { NavItem } from '@/types';
 

@@ -4,15 +4,15 @@ import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+} from '@/components/prefets/ui/dropdown-menu';
 import {
     SidebarMenu,
     SidebarMenuButton,
     SidebarMenuItem,
     useSidebar,
-} from '@/components/ui/sidebar';
-import { UserInfo } from '@/components/user-info';
-import { UserMenuContent } from '@/components/user-menu-content';
+} from '@/components/prefets/ui/sidebar';
+import { UserInfo } from '@/components/prefets/user-info';
+import { UserMenuContent } from '@/components/prefets/user-menu-content';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 export function NavUser() {
@@ -41,8 +41,8 @@ export function NavUser() {
                             isMobile
                                 ? 'bottom'
                                 : state === 'collapsed'
-                                  ? 'left'
-                                  : 'bottom'
+                                    ? 'left'
+                                    : 'bottom'
                         }
                     >
                         <UserMenuContent user={auth.user} />

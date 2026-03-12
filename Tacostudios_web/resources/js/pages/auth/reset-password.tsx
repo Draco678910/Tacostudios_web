@@ -1,10 +1,10 @@
 import { Form, Head } from '@inertiajs/react';
-import InputError from '@/components/input-error';
-import PasswordInput from '@/components/password-input';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Spinner } from '@/components/ui/spinner';
+import InputError from '@/components/prefets/input-error';
+import PasswordInput from '@/components/prefets/password-input';
+import { Button } from '@/components/prefets/ui/button';
+import { Input } from '@/components/prefets/ui/input';
+import { Label } from '@/components/prefets/ui/label';
+import { Spinner } from '@/components/prefets/ui/spinner';
 import AuthLayout from '@/layouts/auth-layout';
 import { update } from '@/routes/password';
 

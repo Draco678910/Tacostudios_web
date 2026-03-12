@@ -1,35 +1,35 @@
 import { Link, usePage } from '@inertiajs/react';
 import { BookOpen, Folder, LayoutGrid, Menu, Search } from 'lucide-react';
-import AppLogo from '@/components/app-logo';
-import AppLogoIcon from '@/components/app-logo-icon';
-import { Breadcrumbs } from '@/components/breadcrumbs';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Button } from '@/components/ui/button';
+import AppLogo from '@/components/prefets/app-logo';
+import AppLogoIcon from '@/components/prefets/app-logo-icon';
+import { Breadcrumbs } from '@/components/prefets/breadcrumbs';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/prefets/ui/avatar';
+import { Button } from '@/components/prefets/ui/button';
 import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+} from '@/components/prefets/ui/dropdown-menu';
 import {
     NavigationMenu,
     NavigationMenuItem,
     NavigationMenuList,
     navigationMenuTriggerStyle,
-} from '@/components/ui/navigation-menu';
+} from '@/components/prefets/ui/navigation-menu';
 import {
     Sheet,
     SheetContent,
     SheetHeader,
     SheetTitle,
     SheetTrigger,
-} from '@/components/ui/sheet';
+} from '@/components/prefets/ui/sheet';
 import {
     Tooltip,
     TooltipContent,
     TooltipProvider,
     TooltipTrigger,
-} from '@/components/ui/tooltip';
-import { UserMenuContent } from '@/components/user-menu-content';
+} from '@/components/prefets/ui/tooltip';
+import { UserMenuContent } from '@/components/prefets/user-menu-content';
 import { useCurrentUrl } from '@/hooks/use-current-url';
 import { useInitials } from '@/hooks/use-initials';
 import { cn, toUrl } from '@/lib/utils';

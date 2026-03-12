@@ -1,11 +1,11 @@
 // Components
 import { Form, Head } from '@inertiajs/react';
 import { LoaderCircle } from 'lucide-react';
-import InputError from '@/components/input-error';
-import TextLink from '@/components/text-link';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import InputError from '@/components/prefets/input-error';
+import TextLink from '@/components/prefets/text-link';
+import { Button } from '@/components/prefets/ui/button';
+import { Input } from '@/components/prefets/ui/input';
+import { Label } from '@/components/prefets/ui/label';
 import AuthLayout from '@/layouts/auth-layout';
 import { login } from '@/routes';
 import { email } from '@/routes/password';
