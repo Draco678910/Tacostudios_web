@@ -24,10 +24,15 @@
     <style>
         html {
             background-color: oklch(1 0 0);
+            padding: 0%;
+            margin: 0%;
         }
 
         html.dark {
             background-color: oklch(0.145 0 0);
+
+            padding: 0%;
+            margin: 0%;
         }
     </style>
 

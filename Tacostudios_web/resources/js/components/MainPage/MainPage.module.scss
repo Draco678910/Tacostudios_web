@@ -1,8 +1,13 @@
 .mainBody {
+
     padding: 0 auto;
     margin: 0 auto;
     display: grid;
-    grid-template-rows: 1fr auto 1fr;
+    grid-template-rows: 1px auto 1fr;
+}
+
+.divEspaiHeader {
+    height: 72px;
 }
 
 .mainPageMain {
@@ -12,10 +17,11 @@
 
 .about {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .divImgAbout {
-    width: 55%;
+    width: 50%;
 
     img {
         width: 100%;
@@ -26,7 +32,7 @@
 .divTextAbout {
     padding-left: 80px;
     padding-top: 20px;
-    width: 70%;
+    width: 45%;
     color: white;
 
     h2 {
@@ -35,14 +41,106 @@
 }
 
 .banner {
-    background-image: url("/TacostudiosBannerB.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 550px;
+    display: flex;
+    flex-wrap: wrap;
+    height: 400px;
+    text-align: center;
+    justify-content: center;
+    padding-top: 10px;
+
+    div {
+        opacity: 90%;
+        position: static;
+        background-position: center;
+        width: 99%;
+        height: 98%;
+        background-image: url("/TacostudiosBannerB.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+    background-size: 1800% 1800%;
+
+    -webkit-animation: rainbow 18s ease infinite;
+    -z-animation: rainbow 18s ease infinite;
+    -o-animation: rainbow 18s ease infinite;
+    animation: rainbow 18s ease infinite;
+
+}
+
+@-webkit-keyframes rainbow {
+    0% {
+        background-position: 0% 82%
+    }
+
+    50% {
+        background-position: 100% 19%
+    }
+
+    100% {
+        background-position: 0% 82%
+    }
+}
+
+@-moz-keyframes rainbow {
+    0% {
+        background-position: 0% 82%
+    }
+
+    50% {
+        background-position: 100% 19%
+    }
+
+    100% {
+        background-position: 0% 82%
+    }
+}
+
+@-o-keyframes rainbow {
+    0% {
+        background-position: 0% 82%
+    }
+
+    50% {
+        background-position: 100% 19%
+    }
+
+    100% {
+        background-position: 0% 82%
+    }
+}
+
+@keyframes rainbow {
+    0% {
+        background-position: 0% 82%
+    }
+
+    50% {
+        background-position: 100% 19%
+    }
+
+    100% {
+        background-position: 0% 82%
+    }
 }
 
 .noticies {
-    background-color: blue;
-    height: 240px;
+    display: flex;
+    flex-wrap: wrap;
+    height: 30%;
+    justify-content: center;
+
+    h1 {
+        text-align: center;
+        color: white;
+        border-bottom: white 2px solid;
+        width: 30%;
+        height: 40px;
+        padding-bottom: 0px;
+        margin-bottom: 0px;
+    }
+
+    padding-bottom: 5%;
 }
