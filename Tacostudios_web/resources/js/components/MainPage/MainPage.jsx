@@ -5,7 +5,6 @@ import Footer from "../Footer/Footer";
 import Noticies from "../Noticies/Noticies";
 
 const MainPage = ({ }) => {
-    console.log("Hola2")
     return (<div className={styles.mainBody}>
         <Header />
         <main className={styles.mainPageMain}>
