@@ -1,0 +1,22 @@
+.noticiesGrid {
+  position: relative;
+  top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 100%;
+}
+
+.moreButton {
+  width: 100%;
+  text-align: center;
+  position: relative;
+  top: 20px;
+}
+.moreButton button {
+  width: 30%;
+}/*# sourceMappingURL=Noticies.module.css.map */

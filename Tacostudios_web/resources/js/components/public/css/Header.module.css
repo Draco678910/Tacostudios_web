@@ -1,0 +1,79 @@
+.HeaderGrid {
+  position: fixed;
+  top: 0px;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 9fr 2fr 1fr;
+  margin: 0 auto;
+  padding: 0 auto;
+  background-image: linear-gradient(170deg, blue, darkblue, black, black, purple, purple);
+  color: white;
+  width: 100%;
+}
+
+.headerLogo {
+  background-image: url("/TacostudiosLogo.png");
+  margin-left: 20px;
+  margin-right: 20px;
+  width: 80px;
+  height: 80px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.HeaderUserDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+.HeaderUserDiv a {
+  height: 50%;
+  border: white solid 2px;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  left: 20%;
+  width: 50%;
+}
+.HeaderUserDiv a img {
+  height: 30px;
+}
+.HeaderUserDiv a p {
+  font-size: 15px;
+}
+.HeaderUserDiv a {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.headerOpcionsDiv {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+.headerOpcionsDiv a {
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  top: 13px;
+}
+.headerOpcionsDiv a img {
+  height: 60%;
+}/*# sourceMappingURL=Header.module.css.map */
