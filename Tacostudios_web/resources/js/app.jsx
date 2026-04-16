@@ -1,26 +1,32 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import paginaLayout from './layouts/pagina-layout';
-
+import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-// import '../css/app.css';
-import styles from './app.module.scss';
-import MainPage from './components/MainPage/MainPage';
-import Botiga from './components/Botiga/Botiga';
-import Carret from './components/Carret/Carret';
-import Noticies from './components/Noticies/Noticies';
+import '../css/app.css';
+import { initializeTheme } from '@/hooks/use-appearance';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
-function App() {
-    return (
-        // <paginaLayout>
-        <MainPage />
-        // <Carret />
-        // <Noticies />
-        // <Botiga />
-        // </paginaLayout>
-    )
-}
-ReactDOM.createRoot(document.getElementById('app')).render(<App />);
+
+createInertiaApp({
+    title: (title) => (title ? `${title} - ${appName}` : appName),
+    resolve: (name) =>
+        resolvePageComponent(
+            `./pages/${name}.jsx`,
+            import.meta.glob('./pages/**/*.jsx'),
+        ),
+    setup({ el, App, props }) {
+        const root = createRoot(el);
+
+        root.render(
+            <StrictMode>
+                <App {...props} />
+            </StrictMode>,
+        );
+    },
+    progress: {
+        color: '#4B5563',
+    },
+});
+
+// This will set light / dark mode on load...
+initializeTheme();
