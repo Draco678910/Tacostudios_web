@@ -6,7 +6,6 @@ export default function Carret() {
 
     return (
         <body>
-            <Header />
             <main class="pt-32 pb-24 px-6 md:px-12 lg:px-24 min-h-screen">
 
                 <div class="max-w-7xl mx-auto">
@@ -79,7 +78,7 @@ export default function Carret() {
                                     </div>
                                 </div>
                             </div>
-                            <a class="inline-flex items-center gap-3 text-secondary-fixed hover:gap-5 transition-all duration-300 mt-8 group font-headline" href="#">
+                            <a class="inline-flex items-center gap-3 text-secondary-fixed hover:gap-5 transition-all duration-300 mt-8 group font-headline" href="/botiga">
                                 <span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
                                 <span>Continuar comprant</span>
                             </a>
@@ -119,7 +118,6 @@ export default function Carret() {
                 </div>
 
             </main>
-            <Footer />
         </body>
     )
 }

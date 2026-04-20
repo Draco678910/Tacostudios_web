@@ -1,8 +1,6 @@
-import { Head, Link, usePage } from '@inertiajs/react';
-import { dashboard, login, register } from '@/routes';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
-import Noticies from '../components/Noticies/Noticies';
+import Botiga from '../components/Botiga/Botiga';
 
 export default function Inici() {
 
@@ -10,7 +8,7 @@ export default function Inici() {
         <>
             <body>
                 <Header />
-                <Noticies />
+                <Botiga />
                 <Footer />
             </body>
         </>

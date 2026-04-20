@@ -9,9 +9,9 @@ export default function Header() {
                     Logo
                 </div>
                 <div class="hidden md:flex items-center space-x-10 font-['Space_Grotesk'] tracking-tight">
-                    <a class="text-white/70 hover:text-white transition-all duration-200" href="/inici">Pagina Principal</a>
-                    <a class="text-white/70 hover:text-white transition-all duration-200" href="Botiga">Botiga</a>
-                    <a class="text-white/70 hover:text-white transition-all duration-200" href="#">Noticies</a>
+                    <a class="text-white/70 hover:text-white transition-all duration-200" href="/">Pagina Principal</a>
+                    <a class="text-white/70 hover:text-white transition-all duration-200" href="/botiga">Botiga</a>
+                    <a class="text-white/70 hover:text-white transition-all duration-200" href="/noticias">Noticies</a>
                     <a class="text-white/70 hover:text-white transition-all duration-200" href="#">Sobre nossaltres</a>
                 </div>
                 <div class="flex items-center gap-6">

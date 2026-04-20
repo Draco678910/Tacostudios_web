@@ -2,10 +2,9 @@
 import Header from '../Header/Header';
 import Footer from "../Footer/Footer";
 
-export default function MainPage({ }) {
+export default function Botiga({ }) {
     return (
         <div>
-            <Header />
             <main className="pt-20 text-white">
                 <section className="relative h-153.5 flex items-center px-8 md:px-16 overflow-hidden p-5">
                     <div className="absolute inset-0 z-0">
@@ -30,8 +29,8 @@ export default function MainPage({ }) {
                 <section className="px-8 md:px-16 py-12">
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 p-4 bg-surface-container-low rounded-xl">
                         <div className="relative flex-1 group">
-                            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant material-symbols-outlined">search</span>
-                            <input className="w-full bg-surface-container-highest border-none rounded-full pl-12 pr-6 py-4 font-headline text-on-surface placeholder:text-on-surface-variant focus:ring-2 focus:ring-primary transition-all" placeholder="Find your next obsession..." type="text" />
+                            <span className="absolute left-4 top-4 text-on-surface-variant material-symbols-outlined">search</span>
+                            <input className="w-full bg-surface-container-highest border-none rounded-full pl-12 pr-6 py-4 font-headline text-on-surface placeholder:text-on-surface-variant focus:ring-2 focus:ring-primary transition-all" placeholder="Busca" type="text" />
                         </div>
                         <div className="flex items-center pb-2 md:pb-0 w-3/12">
                             <select id="select" className="w-full bg-surface-container-highest border-none rounded-full pr-6 py-4 font-headline text-on-surface">
@@ -40,6 +39,13 @@ export default function MainPage({ }) {
                                 </option>
                             </select>
                         </div>
+                        <a href="/carret" className=' text-center flex justify-center w-14 h-14 bg-primary text-on-primary-fixed font-bold rounded-md transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(199,153,255,0.3)]'>
+                            <button>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                                </svg>
+                            </button>
+                        </a>
                     </div>
 
                 </section>
@@ -194,7 +200,6 @@ export default function MainPage({ }) {
                     </div>
                 </section>
             </main>
-            <Footer />
         </div>
     )
 }
