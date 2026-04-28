@@ -1,5 +1,5 @@
 //Main Page
-import Noticies from "../Noticies/Noticies";
+import Noticia from "../Noticia/Noticia"
 
 export default function MainPage({ }) {
     return (
@@ -8,7 +8,7 @@ export default function MainPage({ }) {
             <section className="relative min-h-screen flex items-end pt-32 pb-24 px-8 overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img alt="Banner" className="w-full h-full object-cover" src="./Banner1.png" />
-                    <div class="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent"></div>
+                    <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent"></div>
                 </div>
                 <div className="relative z-10 max-w-5xl">
                     <br />
@@ -18,12 +18,17 @@ export default function MainPage({ }) {
                         Explora els nostres jocs i mira les ultimes noticies
                     </p>
                     <div className="flex flex-wrap gap-6">
-                        <button className="bg-linear-to-r bg-primary from-primary to-primary-container text-on-primary-fixed font-headline px-10 py-5 rounded-md font-bold text-lg hover:shadow-[0_0_20px_rgba(199,153,255,0.4)] transition-all active:scale-95">
-                            BOTIGA
-                        </button>
-                        <button className="bg-surface-container-highest border border-outline-variant/20 text-on-surface font-headline px-10 py-5 rounded-md font-bold text-lg hover:bg-surface-container transition-all active:scale-95">
-                            NOTICIES
-                        </button>
+                        <a href="/botiga">
+                            <button className="bg-linear-to-r bg-primary from-primary to-primary-container text-on-primary-fixed font-headline px-10 py-5 rounded-md font-bold text-lg hover:shadow-[0_0_20px_rgba(199,153,255,0.4)] transition-all active:scale-95">
+                                BOTIGA
+                            </button>
+                        </a>
+                        <a href="/noticias">
+                            <button className="bg-surface-container-highest border border-outline-variant/20 text-on-surface font-headline px-10 py-5 rounded-md font-bold text-lg hover:bg-surface-container transition-all active:scale-95">
+                                NOTICIES
+                            </button>
+                        </a>
+
                     </div>
                 </div>
             </section>
@@ -69,58 +74,26 @@ export default function MainPage({ }) {
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {/* <!-- News Card 1 --> */}
-                        <div className="group bg-surface-container-high rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-2">
-                            <div className="aspect-video relative overflow-hidden">
-                                <img alt="News 3" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Wide shot of a professional audio mixing console with many sliders and glowing level meters in a high-end recording studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLQxvAdsajZdv73kgNrJVOh8SIbTIN1iUu6q_woCNoLbxVeCF3ZNhhR466uVlp8W9iJfYnRzDWGpqJtUWN9bm_mU8jEDPnm-0vnyJ-OZBWlUnHoQgNKFu0o6mxUPrHeS4ZObWNPvEu4mswH-QRVbVDt6qJ2kurpYzOxzWuAXHYux_sgBY-75KgdpnNb-rZqS5LViGvt7yUgrEncUUMvXc_9236VrKjc72m3037qPDaNigZdQj3pAJ6MnTDMGWG8bleyIsyFeCmKMJ4" />                                    <div className="absolute inset-0 bg-linear-to-t from-surface-container-high via-transparent to-transparent"></div>
-                            </div>
-                            <div className="p-8">
-                                <div className="flex items-center gap-3 mb-4">
-                                    <span className="px-3 py-1 bg-surface-container-lowest text-secondary text-[10px] font-headline uppercase tracking-widest rounded-full">Etiqueta</span>
-                                    <span className="text-on-surface-variant text-[10px] font-headline uppercase tracking-widest">Oct 24, 2024</span>
-                                </div>
-                                <h3 className="text-2xl font-headline font-bold mb-4 group-hover:text-primary transition-colors">Noticia1</h3>
-                                <p className="text-on-surface-variant text-sm leading-relaxed mb-6">
-                                    A deep dive into how our custom engine handles procedural generation without sacrificing artistic intent.
-                                </p>
-                                <span className="material-symbols-outlined text-primary group-hover:translate-x-2 transition-transform" data-icon="arrow_forward">arrow_forward</span>
-                            </div>
-                        </div>
+                        <Noticia />
                         {/* <!-- News Card 2 --> */}
-                        <div className="group bg-surface-container-high rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-2">
-                            <div className="aspect-video relative overflow-hidden">
-                                <img alt="News 3" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Wide shot of a professional audio mixing console with many sliders and glowing level meters in a high-end recording studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLQxvAdsajZdv73kgNrJVOh8SIbTIN1iUu6q_woCNoLbxVeCF3ZNhhR466uVlp8W9iJfYnRzDWGpqJtUWN9bm_mU8jEDPnm-0vnyJ-OZBWlUnHoQgNKFu0o6mxUPrHeS4ZObWNPvEu4mswH-QRVbVDt6qJ2kurpYzOxzWuAXHYux_sgBY-75KgdpnNb-rZqS5LViGvt7yUgrEncUUMvXc_9236VrKjc72m3037qPDaNigZdQj3pAJ6MnTDMGWG8bleyIsyFeCmKMJ4" />                                    <div className="absolute inset-0 bg-linear-to-t from-surface-container-high via-transparent to-transparent"></div>
-                            </div>
-                            <div className="p-8">
-                                <div className="flex items-center gap-3 mb-4">
-                                    <span className="px-3 py-1 bg-surface-container-lowest text-primary text-[10px] font-headline uppercase tracking-widest rounded-full">Etiqueta</span>
-                                    <span className="text-on-surface-variant text-[10px] font-headline uppercase tracking-widest">Oct 18, 2024</span>
-                                </div>
-                                <h3 className="text-2xl font-headline font-bold mb-4 group-hover:text-primary transition-colors">Noticia2</h3>
-                                <p className="text-on-surface-variant text-sm leading-relaxed mb-6">
-                                    We are looking for 500 pioneers to step into our world for the first time. Apply for the alpha test phase.
-                                </p>
-                                <span className="material-symbols-outlined text-primary group-hover:translate-x-2 transition-transform" data-icon="arrow_forward">arrow_forward</span>
-                            </div>
-                        </div>
+                        <Noticia />
                         {/* <!-- News Card 3 --> */}
-                        <div className="group bg-surface-container-high rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-2">
-                            <div className="aspect-video relative overflow-hidden">
-                                <img alt="News 3" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Wide shot of a professional audio mixing console with many sliders and glowing level meters in a high-end recording studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLQxvAdsajZdv73kgNrJVOh8SIbTIN1iUu6q_woCNoLbxVeCF3ZNhhR466uVlp8W9iJfYnRzDWGpqJtUWN9bm_mU8jEDPnm-0vnyJ-OZBWlUnHoQgNKFu0o6mxUPrHeS4ZObWNPvEu4mswH-QRVbVDt6qJ2kurpYzOxzWuAXHYux_sgBY-75KgdpnNb-rZqS5LViGvt7yUgrEncUUMvXc_9236VrKjc72m3037qPDaNigZdQj3pAJ6MnTDMGWG8bleyIsyFeCmKMJ4" />
-                                <div className="absolute inset-0 bg-linear-to-t from-surface-container-high via-transparent to-transparent"></div>
+                        <Noticia />
+                    </div>
+                    <section className="mt-32 p-12 rounded-2xl bg-surface-container-low border border-outline-variant/10 relative overflow-hidden">
+                        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                            <div>
+                                <h2 className="text-4xl headline-font font-bold mb-4">NO ET PERDIS LES<span className="text-secondary"> NOVETATS</span></h2>
+                                <p className="text-on-surface-variant">Inicia sesió per no perdre les ultimes noticies</p>
                             </div>
-                            <div className="p-8">
-                                <div className="flex items-center gap-3 mb-4">
-                                    <span className="px-3 py-1 bg-surface-container-lowest text-tertiary text-[10px] font-headline uppercase tracking-widest rounded-full">Etiqueta</span>
-                                    <span className="text-on-surface-variant text-[10px] font-headline uppercase tracking-widest">Oct 12, 2024</span>
-                                </div>
-                                <h3 className="text-2xl font-headline font-bold mb-4 group-hover:text-primary transition-colors">Noticia3</h3>
-                                <p className="text-on-surface-variant text-sm leading-relaxed mb-6">
-                                    Listen to the first three tracks from our original score, featuring haunting synth-scapes and glitch-pop rhythms.
-                                </p>
-                                <span className="material-symbols-outlined text-primary group-hover:translate-x-2 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+                            <div className="flex gap-4">
+                                <button className="bg-primary hover:animate-tGlow transition-shadow duration-500 text-on-primary-fixed px-8 py-4 rounded-md font-bold headline-font hover:brightness-110 active:scale-95">INICIAR SESIÓ</button>
                             </div>
                         </div>
-                    </div>
+                        {/* <!-- Decorative Glow --> */}
+                        <div className="absolute -top-24 -right-24 w-64 h-64 bg-primary/10 blur-[100px] rounded-full"></div>
+                        <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-secondary/10 blur-[100px] rounded-full"></div>
+                    </section>
                 </div>
             </section>
         </main>)
