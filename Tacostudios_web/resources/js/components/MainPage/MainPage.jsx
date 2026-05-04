@@ -1,7 +1,12 @@
 //Main Page
-import Noticia from "../Noticia/Noticia"
+import Noticia from "../Noticia/Noticia";
+import { usePage } from '@inertiajs/react';
+import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 
 export default function MainPage({ }) {
+    const { auth } = usePage().props;
+    const user = auth?.user;
+
     return (
         <main className="bg-surface text-on-surface bg-primary text-primary ">
 
@@ -80,22 +85,33 @@ export default function MainPage({ }) {
                         {/* <!-- News Card 3 --> */}
                         <Noticia />
                     </div>
-                    <section className="mt-32 p-12 rounded-2xl bg-surface-container-low border border-outline-variant/10 relative overflow-hidden">
-                        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                            <div>
-                                <h2 className="text-4xl headline-font font-bold mb-4">NO ET PERDIS LES<span className="text-secondary"> NOVETATS</span></h2>
-                                <p className="text-on-surface-variant">Inicia sesió per no perdre les ultimes noticies</p>
+                    {user ? (
+                        <div> </div>
+                    ) : (
+
+                        <section className="mt-32 p-12 rounded-2xl bg-surface-container-low border border-outline-variant/10 relative overflow-hidden">
+                            <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                                <div>
+                                    <h2 className="text-4xl headline-font font-bold mb-4">NO ET <span className="text-secondary">PERDIS RES</span></h2>
+                                    <p className="text-on-surface-variant">Inicia sesió per no perdre les ultimes noticies i els nostres jocs</p>
+                                </div>
+                                <div className="flex gap-4">
+                                    <a href="/login">
+                                        <button className="bg-primary hover:animate-tGlow transition-shadow duration-500 text-on-primary-fixed px-8 py-4 rounded-md font-bold headline-font hover:brightness-110 active:scale-95">INICIAR SESIÓ</button>
+                                    </a>
+                                    <a href="/register">
+                                        <button className="bg-primary hover:animate-tGlow transition-shadow duration-500 text-on-primary-fixed px-8 py-4 rounded-md font-bold headline-font hover:brightness-110 active:scale-95">REGISTRAR-SE</button>
+                                    </a>
+                                </div>
+
                             </div>
-                            <div className="flex gap-4">
-                                <button className="bg-primary hover:animate-tGlow transition-shadow duration-500 text-on-primary-fixed px-8 py-4 rounded-md font-bold headline-font hover:brightness-110 active:scale-95">INICIAR SESIÓ</button>
-                            </div>
-                        </div>
-                        {/* <!-- Decorative Glow --> */}
-                        <div className="absolute -top-24 -right-24 w-64 h-64 bg-primary/10 blur-[100px] rounded-full"></div>
-                        <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-secondary/10 blur-[100px] rounded-full"></div>
-                    </section>
-                </div>
-            </section>
-        </main>)
+                            {/* <!-- Decorative Glow --> */}
+                            <div className="absolute -top-24 -right-24 w-64 h-64 bg-primary/10 blur-[100px] rounded-full"></div>
+                            <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-secondary/10 blur-[100px] rounded-full"></div>
+                        </section >
+                    )}
+                </div >
+            </section >
+        </main >)
 }
 

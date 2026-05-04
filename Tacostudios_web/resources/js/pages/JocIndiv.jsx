@@ -1,16 +1,15 @@
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
-import Botiga from '../components/Botiga/Botiga';
+import JocMostrar from '../components/JocMostrar/JocMostrar';
 
-export default function Inici() {
-
+export default function jocIndiv() {
     return (
         <>
-            <main>
+            <article>
                 <Header />
-                <Botiga />
+                <JocMostrar />
                 <Footer />
-            </main>
+            </article>
         </>
     );
 }

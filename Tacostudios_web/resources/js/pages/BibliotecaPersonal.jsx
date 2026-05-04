@@ -1,16 +1,15 @@
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
-import Botiga from '../components/Botiga/Botiga';
+import Biblioteca from '../components/Biblioteca/Biblioteca';
 
-export default function Inici() {
-
+export default function BibliotecaPersonal() {
     return (
         <>
-            <main>
+            <article>
                 <Header />
-                <Botiga />
+                <Biblioteca />
                 <Footer />
-            </main>
+            </article>
         </>
-    );
+    )
 }

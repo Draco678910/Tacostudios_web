@@ -35,7 +35,7 @@ export default function Header() {
                     <div className="flex items-center gap-6">
                         <Menu as="div" className="relative inline-block ">
                             <MenuButton className="inline-flex w-full justify-center gap-x-1.5  bg-white/10 px-3 py-2 text-sm font-semibold inset-ring-1 inset-ring-white/5 text-white/70 hover:bg-white/5 p-2 rounded-lg hover:animate-rainbowGlow transition-shadow duration-500 active:scale-90">
-                                Options
+                                Opcions
                             </MenuButton>
 
                             <MenuItems
@@ -59,18 +59,13 @@ export default function Header() {
                                     </MenuItem>
                                     <MenuItem>
                                         <a
-                                            href="#"
-                                            className="block px-4 py-2 text-sm text-gray-300 data-focus:bg-white/5 data-focus:text-white data-focus:outline-hidden"
+                                            href="/biblioteca"
+                                            className="px-4 py-2 text-sm text-gray-300 data-focus:bg-white/5 data-focus:text-white data-focus:outline-hidden flex flex-wrap"
                                         >
-                                            Support
-                                        </a>
-                                    </MenuItem>
-                                    <MenuItem>
-                                        <a
-                                            href="#"
-                                            className="block px-4 py-2 text-sm text-gray-300 data-focus:bg-white/5 data-focus:text-white data-focus:outline-hidden"
-                                        >
-                                            License
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0ZM3.75 12h.007v.008H3.75V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm-.375 5.25h.007v.008H3.75v-.008Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                                            </svg>
+                                            <p className=' ml-1' >Biblioteca</p>
                                         </a>
                                     </MenuItem>
                                     <MenuItem>
@@ -82,7 +77,7 @@ export default function Header() {
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
                                             </svg>
-                                            <p className=' ml-1'>Sign out</p>
+                                            <p className=' ml-1'>Tancar sesió</p>
 
                                         </button>
                                     </MenuItem>
@@ -92,8 +87,8 @@ export default function Header() {
                     </div>
                 ) : (
                     <div className="flex items-center gap-5">
-                        <a href="/login" className=' w-6/12 justify-center  bg-white/10 px-3 text-sm font-semibold inset-ring-1 inset-ring-white/5 text-white/70 hover:bg-white/5 p-2 rounded-lg hover:animate-rainbowGlow transition-shadow duration-500 active:scale-90'><p>Login</p></a>
-                        <a href="/register" className='w-6/12 justify-center   bg-white/10 px-3 text-sm font-semibold inset-ring-1 inset-ring-white/5 text-white/70 hover:bg-white/5 p-2 rounded-lg hover:animate-rainbowGlow transition-shadow duration-500 active:scale-90'><p>Sign in</p></a>
+                        <a href="/login" className=' w-6/12 justify-center  bg-white/10 px-3 text-sm font-semibold inset-ring-1 inset-ring-white/5 text-white/70 hover:bg-white/5 p-2 rounded-lg hover:animate-rainbowGlow transition-shadow duration-500 active:scale-90'><p>Iniciar sesió</p></a>
+                        <a href="/register" className='w-6/12 justify-center   bg-white/10 px-3 text-sm font-semibold inset-ring-1 inset-ring-white/5 text-white/70 hover:bg-white/5 p-2 rounded-lg hover:animate-rainbowGlow transition-shadow duration-500 active:scale-90'><p>Registrar-se</p></a>
                     </div>
                 )}
             </div>
