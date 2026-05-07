@@ -1,4 +1,4 @@
-import JuegoBiblioteca from "../JuegoBiblioteca/JuegoBiblioteca"
+import JuegoIndiv from "../JuegoIndiv/JuegoIndiv"
 
 export default function Biblioteca() {
     return (<main class="pt-32 pb-24 px-8 md:px-16 lg:px-24 max-w-7xl mx-auto min-h-screen">
@@ -18,11 +18,11 @@ export default function Biblioteca() {
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-                <JuegoBiblioteca Favorit="True" />
+                <JuegoIndiv Favorit="True" />
 
-                <JuegoBiblioteca Favorit="True" />
+                <JuegoIndiv Favorit="True" />
 
-                <JuegoBiblioteca Favorit="True" />
+                <JuegoIndiv Favorit="True" />
             </div>
         </section>
         {/* <!-- Search & Filters (Subtle & Integrated) --> */}
@@ -49,17 +49,17 @@ export default function Biblioteca() {
         </div>
         {/* <!-- Personal Game Library Grid (3-column asymmetric) --> */}
         <div class="grid grid-cols-1 md:grid-cols-3 gap-y-20 gap-x-12">
-            <JuegoBiblioteca />
+            <JuegoIndiv />
 
-            <JuegoBiblioteca />
+            <JuegoIndiv />
 
-            <JuegoBiblioteca />
+            <JuegoIndiv />
 
-            <JuegoBiblioteca />
+            <JuegoIndiv />
 
-            <JuegoBiblioteca />
+            <JuegoIndiv />
 
-            <JuegoBiblioteca />
+            <JuegoIndiv />
 
         </div>
     </main>)

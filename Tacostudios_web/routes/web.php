@@ -15,18 +15,24 @@ Route::inertia('/noticias', 'Noticias', [
 
 
 
-//Biblioteca, botiga i vista jocs
+//Botiga i vista jocs
 Route::inertia('/botiga', 'Tienda', [
 ])->name('botiga');
+
+Route::inertia('/jocindiv', 'JocIndiv', [
+])->name('jocIndividual');
 
 Route::inertia('/carret', 'Cart', [
 ])->name('carret');
 
+// Biblioteca i vista jocs biblioteca
 Route::inertia('/biblioteca', 'BibliotecaPersonal', [
 ])->name('biblioteca');
 
-Route::inertia('/jocindiv', 'JocIndiv', [
-])->name('jocIndividual');
+Route::inertia('/jocindivbiblioteca', 'JuegoIndivBiblioteca', [
+])->name('jocIndividualBiblioteca');
+
+
 
 //Usuaris
 Route::inertia('/login', 'auth/login', [

@@ -1,8 +1,8 @@
-export default function JuegoBiblioteca({ Favorit }) {
+export default function JuegoIndiv({ Favorit }) {
 
     if (Favorit) {
         return (
-            <a href="/jocindiv">
+            <a href="/jocindivbiblioteca">
                 <article
                     className="group cursor-pointer relative overflow-hidden rounded-xl bg-surface-container-low border border-white/5 neon-glow">
                     <div className="aspect-video overflow-hidden">
@@ -20,7 +20,7 @@ export default function JuegoBiblioteca({ Favorit }) {
         )
     } else {
         return (
-            <a href="/jocindiv">
+            <a href="/jocindivbiblioteca">
                 <article className="group cursor-pointer">
                     <div
                         className="aspect-3/4 mb-6 overflow-hidden rounded-lg bg-surface-container-low transition-transform duration-500 group-hover:-translate-y-2">
