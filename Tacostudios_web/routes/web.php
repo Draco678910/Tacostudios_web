@@ -4,9 +4,12 @@ use Laravel\Fortify\Features;
 
 use Illuminate\Support\Facades\Auth;
 
-//inici
+//inici i aboutus
 Route::inertia('/', 'Inici', [
 ])->name('home');
+
+Route::inertia('/aboutus', 'SobreNossaltres', [
+])->name('sobreNossaltres');
 
 //Noticies
 Route::inertia('/noticias', 'Noticias', [

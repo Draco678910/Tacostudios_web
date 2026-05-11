@@ -2,6 +2,7 @@
 import { usePage } from '@inertiajs/react';
 import { router } from '@inertiajs/react';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
+import AppLogoIcon from '@/components/prefets/app-logo-icon';
 
 export default function Header() {
     const { auth } = usePage().props;
@@ -15,25 +16,24 @@ export default function Header() {
     return (
         <nav className="fixed top-0 w-full z-50 bg-black/60 backdrop-blur-xl no-border transition-colors duration-300 shadow-[0_20px_40px_rgba(199,153,255,0.08)]">
             <div className="flex justify-between items-center px-8 h-20 max-w-full">
-                <a href="/">
-                    <div className="text-2xl font-bold tracking-tighter text-[#c799ff] font-['Space_Grotesk']">
-                        Logo
-                    </div>
-                </a>
+
 
 
                 <div className="hidden md:flex items-center space-x-10 font-['Space_Grotesk'] tracking-tight">
+                    <a href="/" className='w-3/12'>
+                        <AppLogoIcon />
+                    </a>
                     <a className="text-white/70 hover:text-white transition-all duration-200" href="/">Pagina Principal</a>
                     <a className="text-white/70 hover:text-white transition-all duration-200" href="/botiga">Botiga</a>
                     <a className="text-white/70 hover:text-white transition-all duration-200" href="/noticias">Noticies</a>
-                    <a className="text-white/70 hover:text-white transition-all duration-200" href="#">Sobre nossaltres</a>
+                    <a className="text-white/70 hover:text-white transition-all duration-200" href="/aboutus">Sobre nossaltres</a>
                 </div>
 
 
 
                 {user ? (
-                    <div className="flex items-center gap-6">
-                        <Menu as="div" className="relative inline-block ">
+                    <div className="flex items-center gap-6 flex-wrap">
+                        <Menu as="div" className="relative inline-block">
                             <MenuButton className="inline-flex w-full justify-center gap-x-1.5  bg-white/10 px-3 py-2 text-sm font-semibold inset-ring-1 inset-ring-white/5 text-white/70 hover:bg-white/5 p-2 rounded-lg hover:animate-rainbowGlow transition-shadow duration-500 active:scale-90">
                                 Opcions
                             </MenuButton>

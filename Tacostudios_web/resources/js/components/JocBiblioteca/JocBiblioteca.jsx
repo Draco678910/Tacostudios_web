@@ -17,17 +17,14 @@ export default function JocBiblioteca() {
                             <span className="material-symbols-outlined">play_arrow</span>
                             Jugar
                         </button>
-                        <button className="px-10 py-4 bg-surface-container-highest border border-outline-variant/20 text-on-surface font-bold rounded-md flex items-center gap-2 hover:bg-surface-bright transition-all active:scale-95">
-                            <span className="material-symbols-outlined">download</span>
-                            Descarregar
-                        </button>
                     </div>
                 </div>
             </section>
             <section className="px-8 md:px-16 pb-24 grid grid-cols-1 lg:grid-cols-12 gap-12">
-
                 <div className="lg:col-span-8 space-y-20">
                     <div></div>
+                    {/* 
+                    Logros(Por si acaso lo dejo)
                     <div>
                         <h2 className="font-display text-4xl font-bold mb-10 flex items-center gap-4">
                             <span className="w-12 h-1 bg-secondary rounded-full"></span>
@@ -50,7 +47,7 @@ export default function JocBiblioteca() {
                                     <div className="h-full bg-secondary w-full"></div>
                                 </div>
                             </div>
-                            {/* <!-- Achievement 2 (In Progress) --> */}
+                           
                             <div className="bg-surface-container-high p-6 rounded-xl border border-white/5 group hover:bg-surface-bright transition-all">
                                 <div className="flex items-center gap-4 mb-4">
                                     <div className="w-14 h-14 rounded-lg bg-surface-container flex items-center justify-center border border-outline-variant/20 grayscale">
@@ -66,7 +63,7 @@ export default function JocBiblioteca() {
                                     <div className="h-full bg-primary w-[84%]"></div>
                                 </div>
                             </div>
-                            {/* <!-- Achievement 3 (Locked) --> */}
+                          
                             <div className="bg-surface-container-low p-6 rounded-xl border border-white/5 opacity-60">
                                 <div className="flex items-center gap-4">
                                     <div className="w-14 h-14 rounded-lg bg-surface-container flex items-center justify-center border border-outline-variant/10">
@@ -79,8 +76,8 @@ export default function JocBiblioteca() {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    {/* <!-- Community (Comunitat) --> */}
+                    </div> */}
+
                     <div>
                         <h2 className="font-display text-4xl font-bold mb-10 flex items-center gap-4">
                             <span className="w-12 h-1 bg-primary rounded-full"></span>
@@ -161,12 +158,8 @@ export default function JocBiblioteca() {
                             <h3 className="font-display text-xl font-bold mb-6 text-on-surface-variant uppercase tracking-widest">Estadístiques</h3>
                             <div className="space-y-6">
                                 <div>
-                                    <span className="text-on-surface-variant text-sm block mb-1">Temps de joc</span>
-                                    <span className="text-3xl font-bold text-secondary">48 hores</span>
-                                </div>
-                                <div>
                                     <span className="text-on-surface-variant text-sm block mb-1">Última partida</span>
-                                    <span className="text-xl font-medium">Ahir, 22:15</span>
+                                    <span className="text-3xl font-bold text-secondary">Ahir, 22:15</span>
                                 </div>
                             </div>
                         </div>

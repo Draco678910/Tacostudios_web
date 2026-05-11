@@ -54,10 +54,11 @@ export default function MainPage({ }) {
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id semper felis. Quisque in dictum dolor. Nullam aliquet nulla vitae tortor faucibus condimentum. Nunc interdum, odio eget fermentum aliquam, ante leo gravida elit, sit amet condimentum erat sapien eu ex.
                                 </p>
                             </div>
-                            <div className="mt-12 flex items-center gap-4 text-secondary group cursor-pointer">
+
+                            <a className="mt-12 flex items-center gap-4 text-secondary group cursor-pointer" href="/aboutus">
                                 <span className="font-headline font-bold tracking-widest text-sm uppercase">Més</span>
                                 <span className="material-symbols-outlined group-hover:translate-x-2 transition-transform" data-icon="trending_flat">trending_flat</span>
-                            </div>
+                            </a>
                         </div>
                     </div>
                     <div className="w-full md:w-full grid grid-cols-1 gap-4">
