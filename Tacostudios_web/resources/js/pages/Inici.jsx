@@ -7,7 +7,7 @@ export default function Inici() {
     return (
         <>
             <article>
-                <Header />
+                <Header />  
                 <MainPage />
                 <Footer />
             </article>
