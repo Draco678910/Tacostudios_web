@@ -1,0 +1,28 @@
+.noticiaGrid {
+  background-color: white;
+  width: 30%;
+  height: 100%;
+  border-radius: 20px;
+  text-align: center;
+}
+.noticiaGrid img {
+  background-color: gray;
+  height: 45%;
+  width: 99%;
+  margin: 2px;
+  border-radius: 20px;
+}
+
+.noticiaTextIBoto {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+.noticiaTextIBoto p {
+  grid-column: 0;
+  grid-row: 0;
+}
+.noticiaTextIBoto a {
+  grid-column: 4;
+  grid-row: 3;
+}/*# sourceMappingURL=Noticia.module.css.map */

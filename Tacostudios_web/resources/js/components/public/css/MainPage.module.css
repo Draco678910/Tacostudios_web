@@ -1,0 +1,164 @@
+@-webkit-keyframes rainbow {
+  0% {
+    background-position: 0% 82%;
+  }
+  50% {
+    background-position: 100% 19%;
+  }
+  100% {
+    background-position: 0% 82%;
+  }
+}
+@keyframes rainbow {
+  0% {
+    background-position: 0% 82%;
+  }
+  50% {
+    background-position: 100% 19%;
+  }
+  100% {
+    background-position: 0% 82%;
+  }
+}
+.mainBody {
+  padding: 0 auto;
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: 1px auto 1fr;
+  background-image: linear-gradient(120deg, blue, purple, black);
+}
+
+.divEspaiHeader {
+  height: 72px;
+}
+
+.mainPageMain {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.about {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.divImgAbout {
+  width: 50%;
+}
+.divImgAbout img {
+  width: 100%;
+  padding: 50px;
+}
+
+.divTextAbout {
+  padding-left: 80px;
+  padding-top: 20px;
+  width: 45%;
+  color: white;
+}
+.divTextAbout h2 {
+  font-size: 40px;
+}
+.divTextAbout div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.divTextAbout div h2 {
+  width: 100%;
+}
+.divTextAbout div p {
+  width: 100%;
+}
+.divTextAbout div a {
+  position: relative;
+  left: 80%;
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  width: 10%;
+  border: white 2px solid;
+  border-radius: 5px;
+}
+.divTextAbout div a:hover {
+  background: -webkit-gradient(linear, left top, right top, from(#ff2400), color-stop(#e81d1d), color-stop(#e8b71d), color-stop(#e3e81d), color-stop(#1de840), color-stop(#1ddde8), color-stop(#2b1de8), color-stop(#dd00f3), to(#dd00f3));
+  background: linear-gradient(to right, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+  border-image: -moz-linear-gradient(to right, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3) 1;
+  border-radius: 5px;
+  /* Colors */
+  -webkit-background-clip: text;
+          background-clip: text;
+  /* Clips gradient to text */
+  -webkit-text-fill-color: transparent;
+  /* Makes text transparent to show gradient */
+}
+
+.banner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  height: 400px;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-top: 10px;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+}
+.banner div {
+  opacity: 90%;
+  position: static;
+  background-position: center;
+  width: 99%;
+  height: 98%;
+  background-image: url("/TacostudiosBannerB.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.banner:not(:hover) {
+  background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+  background-size: 1800% 1800%;
+  -webkit-animation: rainbow 10s ease infinite;
+  -z-animation: rainbow 10s ease infinite;
+  animation: rainbow 10s ease infinite;
+}
+
+.banner:hover {
+  background: -webkit-gradient(linear, left top, right top, from(rgb(130, 224, 255)), color-stop(pink), color-stop(white), color-stop(pink), to(rgb(130, 224, 255)));
+  background: linear-gradient(90deg, rgb(130, 224, 255), pink, white, pink, rgb(130, 224, 255));
+  background-size: 100% 100%;
+}
+
+.noticies {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  height: 30%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.noticies h1 {
+  text-align: center;
+  color: white;
+  border-bottom: white 2px solid;
+  width: 30%;
+  height: 40px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+.noticies {
+  padding-bottom: 5%;
+}/*# sourceMappingURL=MainPage.module.css.map */
