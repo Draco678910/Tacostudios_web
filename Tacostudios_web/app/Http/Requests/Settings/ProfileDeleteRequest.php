@@ -16,9 +16,13 @@ class ProfileDeleteRequest extends FormRequest
      * @return array<string, ValidationRule|array<mixed>|string>
      */
     public function rules(): array
-    {
-        return [
-            'password' => $this->currentPasswordRules(),
-        ];
-    }
+{
+    return [
+        'name' => ['required', 'string', 'max:255'],
+        'email' => ['required', 'string', 'lowercase', 'email', 'max:255'],
+
+        // 🔥 AÑADIR ESTO
+        'password' => ['nullable', 'confirmed', 'min:6'],
+    ];
+}
 }

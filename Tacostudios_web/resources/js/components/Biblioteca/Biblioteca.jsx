@@ -1,66 +1,82 @@
+import { usePage } from '@inertiajs/react'
 import JuegoIndiv from "../JuegoIndiv/JuegoIndiv"
 
 export default function Biblioteca() {
-    return (<main class="pt-32 pb-24 px-8 md:px-16 lg:px-24 max-w-7xl mx-auto min-h-screen">
-        {/* <!-- Hero Header --> */}
-        <header class="mb-20">
-            <h1 class="font-display text-5xl md:text-7xl font-bold tracking-tighter mb-4 text-on-surface">
-                La Teva Biblioteca
-            </h1>
-            <p class="font-body text-lg md:text-xl text-on-surface-variant max-w-2xl font-light">
-                Un espai íntim per a les teves col·leccions digitals.
-            </p>
-        </header>
-        <section class="mb-20">
-            <h2 class="font-display text-3xl font-bold tracking-tighter mb-8 text-on-surface flex items-center gap-3">
-                <span class="material-symbols-outlined text-primary">star</span>
-                Els meus Favorits
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-                <JuegoIndiv Favorit="True" />
+    const { jocs = [] } = usePage().props
 
-                <JuegoIndiv Favorit="True" />
+    console.log('JOCS:', jocs)
 
-                <JuegoIndiv Favorit="True" />
-            </div>
-        </section>
-        {/* <!-- Search & Filters (Subtle & Integrated) --> */}
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-16">
-            <div class="relative group max-w-md w-full">
-                <span
-                    class="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant material-symbols-outlined">search</span>
+    
+    const favoritos = jocs.filter(j => j.pivot?.is_favorite === true)
+
+
+    const resto = jocs.filter(j => !j.pivot?.is_favorite)
+
+    return (
+        <main className="pt-32 pb-24 px-8 md:px-16 lg:px-24 max-w-7xl mx-auto min-h-screen">
+
+            <header className="mb-20">
+                <h1 className="font-display text-5xl md:text-7xl font-bold tracking-tighter mb-4 text-on-surface">
+                    La Teva Biblioteca
+                </h1>
+                <p className="font-body text-lg md:text-xl text-on-surface-variant max-w-2xl font-light">
+                    Un espai íntim per a les teves col·leccions digitals.
+                </p>
+            </header>
+
+            {/* FAVORITOS */}
+            <section className="mb-20 p-8 rounded-2xl bg-surface-container-low border border-white/10 shadow-lg">
+
+                <h2 className="font-display text-3xl font-bold mb-8 flex items-center gap-3">
+                    <span className="material-symbols-outlined text-primary">star</span>
+                    Els meus Favorits
+                </h2>
+
+                {favoritos.length === 0 ? (
+                    <p className="text-on-surface-variant">
+                        Encara no tens favorits ⭐
+                    </p>
+                ) : (
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {favoritos.map((joc) => (
+                            <JuegoIndiv key={joc.id} joc={joc} />
+                        ))}
+                    </div>
+                )}
+
+            </section>
+
+            {/* FILTERS */}
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-16">
                 <input
-                    class="w-full bg-surface-container-highest border-none rounded-full py-3 pl-12 pr-6 text-on-surface placeholder:text-on-surface-variant/50 focus:ring-1 focus:ring-secondary/30 font-display transition-all"
-                    placeholder="Cerca a la teva col·lecció..." type="text" />
+                    className="w-full md:max-w-md bg-surface-container-highest rounded-full py-3 px-6 border border-white/10"
+                    placeholder="Cerca a la teva col·lecció..."
+                />
             </div>
-            <div class="flex gap-3 overflow-x-auto pb-2 md:pb-0 scrollbar-hide">
-                <button
-                    class="px-6 py-2 rounded-full bg-secondary text-on-secondary text-sm font-medium whitespace-nowrap">Tots</button>
-                <button
-                    class="px-6 py-2 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface text-sm font-medium transition-colors whitespace-nowrap">Aventura</button>
-                <button
-                    class="px-6 py-2 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface text-sm font-medium transition-colors whitespace-nowrap">Cyberpunk</button>
-                <button
-                    class="px-6 py-2 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface text-sm font-medium transition-colors whitespace-nowrap">Estratègia</button>
-                <button
-                    class="px-6 py-2 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface text-sm font-medium transition-colors whitespace-nowrap">Indie</button>
-            </div>
-        </div>
-        {/* <!-- Personal Game Library Grid (3-column asymmetric) --> */}
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-y-20 gap-x-12">
-            <JuegoIndiv />
 
-            <JuegoIndiv />
+            {/* BIBLIOTECA NORMAL */}
+            <section className="p-8 rounded-2xl bg-surface-container border border-white/10 shadow-md">
 
-            <JuegoIndiv />
+                <h2 className="font-display text-3xl font-bold mb-8 flex items-center gap-3">
+                    <span className="material-symbols-outlined text-secondary">stadia_controller</span>
+                    Tots els jocs
+                </h2>
 
-            <JuegoIndiv />
+                {resto.length === 0 ? (
+                    <p className="text-on-surface-variant">
+                        No tens més jocs a la biblioteca
+                    </p>
+                ) : (
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-y-20 gap-x-12">
+                        {resto.map((joc) => (
+                            <JuegoIndiv key={joc.id} joc={joc} />
+                        ))}
+                    </div>
+                )}
 
-            <JuegoIndiv />
+            </section>
 
-            <JuegoIndiv />
-
-        </div>
-    </main>)
+        </main>
+    )
 }

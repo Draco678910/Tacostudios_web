@@ -12,15 +12,12 @@ return new class extends Migration {
     {
         Schema::create('noticies', function (Blueprint $table) {
             $table->id();
+
             $table->string('titol');
             $table->text('contingut');
 
-            $table->foreignId('category_id')
-                ->nullable()
-                ->constrained('categorias_notic') // 👈 CORRECTO
-                ->onDelete('set null');
 
-            $table->date('data_publicacio')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -29,6 +26,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('noticies');
     }
 };

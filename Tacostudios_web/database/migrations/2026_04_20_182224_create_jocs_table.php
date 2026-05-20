@@ -16,6 +16,7 @@ return new class extends Migration {
         $table->string('nom');
         $table->text('descripcio')->nullable();
         $table->string('imatge')->nullable();
+        $table->decimal('preu', 8, 2)->default(0);
 
         $table->unsignedBigInteger('category_id');
         $table->foreign('category_id')->references('id')->on('categories_jocs');
@@ -26,7 +27,7 @@ return new class extends Migration {
         $table->integer('resenyes_negat')->default(0);
 
         $table->string('arxiu_enllac')->nullable();
-
+        $table->string('slug')->unique();
         $table->timestamps(); // 👈 importante
     });
 }

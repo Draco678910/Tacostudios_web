@@ -6,11 +6,11 @@ export default function Inici() {
 
     return (
         <>
-            <body>
+            <main>
                 <Header />
                 <Noticies />
                 <Footer />
-            </body>
+            </main>
         </>
     );
 }

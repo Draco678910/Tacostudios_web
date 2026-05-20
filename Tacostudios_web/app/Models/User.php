@@ -52,6 +52,12 @@ class User extends Authenticatable
         ];
     }
     
+    public function jocs()
+{
+    return $this->belongsToMany(Joc::class, 'user_joc')
+        ->withPivot('is_favorite', 'last_session')
+        ->withTimestamps();
+}
     public function isAdmin(): bool
     {
         return $this->is_admin;

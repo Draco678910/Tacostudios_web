@@ -20,8 +20,8 @@ class DatabaseSeeder extends Seeder
 
     $this->call([
         AdminUserSeeder::class,
-        CategorySeeder::class, // 👈 ESTE FALTA
-        JocSeeder::class,
+        // CategorySeeder::class, 
+        // JocSeeder::class,
     ]);
 }
 }

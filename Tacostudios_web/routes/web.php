@@ -1,67 +1,195 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
-use Laravel\Fortify\Features;
+use Illuminate\Http\Request;
+use Inertia\Inertia;
 
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Api\JocController;
+use App\Models\Joc;
+use App\Models\Noticia;
+use App\Models\CategoryJoc;
+use App\Models\User;
 
+use App\Http\Controllers\JocController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\NoticiaController;
+use App\Http\Controllers\UserJocController;
+use App\Http\Controllers\Settings\ProfileController;
 
+/*
+|--------------------------------------------------------------------------
+| PUBLIC
+|--------------------------------------------------------------------------
+*/
 
-//inici i aboutus
-Route::inertia('/', 'Inici', [
-])->name('home');
+// HOME
+Route::get('/', function () {
+    return Inertia::render('Inici', [
+        'noticias' => Noticia::latest()->get()
+    ]);
+})->name('home');
 
-Route::inertia('/aboutus', 'SobreNossaltres', [
-])->name('sobreNossaltres');
+// ABOUT
+Route::inertia('/aboutus', 'SobreNossaltres')
+    ->name('sobreNossaltres');
 
-//Noticies
-Route::inertia('/noticias', 'Noticias', [
-])->name('noticias');
+// AUTH
+Route::inertia('/login', 'auth/login')->name('login');
+Route::inertia('/register', 'auth/register')->name('register');
 
+/*
+|--------------------------------------------------------------------------
+| AUTH ROUTES
+|--------------------------------------------------------------------------
+*/
 
+Route::middleware(['auth'])->group(function () {
 
+Route::put('/user/profile', [ProfileController::class, 'update']);
 
-//Botiga i vista jocs
-// Route::inertia('/botiga', 'Tienda', [
-// ])->name('botiga');
+Route::get('/user-menu', function () {
+    return Inertia::render('MenuUsuari');
+})->middleware(['auth'])->name('user.menu');
+    /*
+    |--------------------------------------------------------------------------
+    | NOTICIES
+    |--------------------------------------------------------------------------
+    */
 
-// Route::inertia('/jocindiv', 'JocIndiv', [
-// ])->name('jocIndividual');
+    Route::get('/noticias', function (Request $request) {
 
+        $perPage = 6;
 
+        $query = Noticia::latest()->skip(1);
 
-// Botiga
-Route::get('/botiga', [JocController::class, 'index'])->name('botiga');
+        $noticies = $query->paginate($perPage);
 
-// Juego individual (SLUG)
-Route::get('/jocs/{slug}', [JocController::class, 'show'])->name('joc.show');
+        return Inertia::render('Noticias', [
+            'featured' => Noticia::latest()->first(),
+            'noticies' => $noticies,
+        ]);
 
-// Carrito
-Route::inertia('/carret', 'Cart')->name('carret');
+    })->name('noticias');
 
-// Biblioteca
-Route::inertia('/biblioteca', 'BibliotecaPersonal')->name('biblioteca');
+    Route::get('/noticia/{id}', function ($id) {
 
-Route::inertia('/jocindivbiblioteca', 'JuegoIndivBiblioteca')
-    ->name('jocIndividualBiblioteca');
+        $noticia = Noticia::findOrFail($id);
 
+        return Inertia::render('NoticiaIndiv', [
+            'noticia' => $noticia
+        ]);
 
+    });
 
-//Usuaris
-Route::inertia('/login', 'auth/login', [
-])->name('login');
+    /*
+    |--------------------------------------------------------------------------
+    | BOTIGA
+    |--------------------------------------------------------------------------
+    */
 
-Route::inertia('/register', 'auth/register', [
-])->name('register');
+    Route::get('/botiga', [JocController::class, 'index'])
+        ->name('botiga');
 
-Route::inertia('/admin', 'Administracio')
-    ->name('admin');
+    Route::get('/jocbotiga/{id}', function ($id) {
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::inertia('inici', 'inici')->name('inici');
+        $joc = Joc::with('category')->findOrFail($id);
+
+        return Inertia::render('JocIndiv', [
+            'joc' => $joc
+        ]);
+
+    });
+
+    /*
+    |--------------------------------------------------------------------------
+    | CARRITO
+    |--------------------------------------------------------------------------
+    */
+
+    Route::inertia('/carret', 'Cart')
+        ->name('carret');
+
+    /*
+    |--------------------------------------------------------------------------
+    | BIBLIOTECA
+    |--------------------------------------------------------------------------
+    */
+
+    Route::get('/biblioteca', [UserJocController::class, 'biblioteca'])
+        ->name('biblioteca');
+
+    Route::post('/joc/{id}/favorite', [UserJocController::class, 'toggleFavorite'])
+        ->name('joc.favorite');
+
+    Route::post('/joc/{id}/play', [UserJocController::class, 'play'])
+    ->middleware('auth')
+    ->name('joc.play');     
+
+    Route::get('/joc/{id}', function ($id) {
+
+    $user = Auth::user();
+
+    $joc = $user->jocs()
+        ->with('category')
+        ->where('jocs.id', $id)
+        ->firstOrFail();
+
+    return Inertia::render('JocInfoBiblio', [
+        'joc' => $joc
+    ]);
+
+})->middleware('auth');
+
 });
 
+/*
+|--------------------------------------------------------------------------
+| ADMIN
+|--------------------------------------------------------------------------
+*/
 
+Route::get('/admin', function () {
 
+    return Inertia::render('Administracio', [
+        'jocs' => Joc::with('category')->latest()->get(),
+        'categories' => CategoryJoc::all(),
+        'noticies' => Noticia::latest()->get(),
+        'users' => User::select('id', 'name')->get(),
+    ]);
+
+})->name('admin');
+
+Route::prefix('admin')
+    ->name('admin.')
+    ->group(function () {
+
+        // JOCS
+        Route::resource('jocs', JocController::class);
+
+        // CATEGORIES
+        Route::resource('categories', CategoryController::class);
+
+        // NOTICIES
+        Route::resource('noticies', NoticiaController::class);
+
+        // USER JOCS
+        Route::post('/user-jocs/toggle', [UserJocController::class, 'toggleAdmin'])
+            ->name('userjocs.toggle');
+
+        Route::get('/user-jocs', [UserJocController::class, 'indexAdmin'])
+            ->name('userjocs.index');
+    });
+
+/*
+|--------------------------------------------------------------------------
+| VERIFIED
+|--------------------------------------------------------------------------
+*/
+
+Route::middleware(['auth', 'verified'])->group(function () {
+
+    Route::inertia('/inici', 'inici')
+        ->name('inici');
+
+});
 
 require __DIR__ . '/settings.php';

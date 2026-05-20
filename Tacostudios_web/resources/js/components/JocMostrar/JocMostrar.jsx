@@ -1,125 +1,167 @@
+import useCart from "../../hooks/useCart";
+import { Link } from "@inertiajs/react";
+
 export default function JocMostrar({ joc }) {
+    const { addToCart, cart } = useCart();
+
+    const price = Number(joc?.preu ?? 0);
+    const category = joc?.category?.nom;
+
+    const cartCount = cart?.length ?? 0;
+
     return (
-        <main className="pt-0">
+        <main className="pt-0 text-white">
 
             {/* HERO */}
-            <section className="relative h-230.25 w-full overflow-hidden flex flex-wrap">
+            <section className="relative min-h-screen flex">
 
-                {/* IMAGEN */}
-                <div className="w-6/12 relative">
+                {/* BACKGROUND */}
+                <div className="absolute inset-0">
                     <img
-                        className="w-full h-full object-cover"
-                        src={joc?.imatge || "https://via.placeholder.com/800"}
+                        src={joc?.imatge || "https://via.placeholder.com/1200"}
                         alt={joc?.nom}
+                        className="w-full h-full object-cover scale-105"
                     />
-                    <div className="absolute inset-0 hero-gradient"></div>
+
+                    <div className="absolute inset-0 bg-linear-to-r from-black/90 via-black/60 to-black/20" />
+                    <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
                 </div>
 
-                {/* INFO */}
-                <div className="relative h-full max-w-7xl mx-auto px-8 flex flex-col justify-end pb-24 w-6/12">
-                    <div className="max-w-3xl">
+                {/* CONTENT */}
+                <div className="relative z-10 w-full flex items-end px-10 md:px-20 pb-24">
+
+                    <div className="max-w-4xl space-y-6">
 
                         {/* CATEGORY */}
-                        <div className="flex gap-3 mb-6">
-                            <span className="px-4 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold">
-                                {joc?.category?.nom || "Sense categoria"}
+                        {category && (
+                            <span className="inline-flex px-4 py-1 rounded-full bg-primary/20 text-primary text-xs font-bold tracking-widest uppercase border border-primary/30 backdrop-blur-md">
+                                {category}
                             </span>
-                        </div>
+                        )}
 
-                        {/* TITLE */}
-                        <h1 className="text-7xl md:text-9xl font-display font-bold">
-                            {joc?.nom}
-                        </h1>
+                        {/* TITLE + PRICE */}
+                        <div className="flex flex-wrap items-end gap-6">
+
+                            <h1 className="text-6xl md:text-8xl font-black leading-none">
+                                {joc?.nom}
+                            </h1>
+
+                            <span className="px-5 py-2 rounded-xl bg-black/60 border border-white/20 text-primary text-2xl font-bold backdrop-blur-md shadow-lg">
+                                {price.toFixed(2)} €
+                            </span>
+
+                        </div>
 
                         {/* DESCRIPTION */}
-                        <p className="text-xl md:text-2xl mt-6 text-on-surface-variant">
+                        <p className="text-lg md:text-xl text-white/70 max-w-2xl">
+                            {joc?.descripcio?.slice(0, 220)}
+                        </p>
+
+                        {/* CTA */}
+                        <div className="flex flex-wrap items-center gap-6 pt-4">
+
+                            <button
+                                onClick={() => addToCart(joc)}
+                                className="group flex items-center gap-3 px-10 py-5 rounded-2xl bg-primary text-black font-bold text-lg hover:scale-105 active:scale-95 transition-all shadow-lg shadow-primary/30"
+                            >
+                                🛒 Afegeix al carret
+                            </button>
+
+                            <span className="text-sm text-white/60">
+                                Compra instantània · Accés immediat
+                            </span>
+
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            {/* INFO SECTION */}
+            <section className="bg-surface-container-low py-24">
+
+                <div className="max-w-6xl mx-auto px-10 grid grid-cols-1 md:grid-cols-3 gap-10">
+
+                    {/* DESCRIPTION */}
+                    <div className="md:col-span-2 space-y-6">
+
+                        <h2 className="text-3xl font-bold text-secondary">
+                            Sobre el joc
+                        </h2>
+
+                        <p className="text-on-surface-variant text-lg leading-relaxed">
                             {joc?.descripcio}
                         </p>
-
-                        {/* BUTTON */}
-                        <div className="flex flex-wrap gap-6 mt-10">
-                            <button className="bg-surface-container-highest border border-outline-variant/20 px-10 py-5 rounded-md font-bold text-lg hover:bg-surface-container transition-all active:scale-95 flex items-center gap-3">
-
-                                <span className="material-symbols-outlined">
-                                    shopping_cart
-                                </span>
-
-                                Afegeix al carret
-                            </button>
-                        </div>
-
                     </div>
-                </div>
-            </section>
 
-            {/* DESCRIPTION SECTION */}
-            <section className="bg-surface-container-low py-32">
-                <div className="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
+                    {/* SIDEBAR */}
+                    <div className="space-y-6">
 
-                    <div>
-                        <h2 className="text-4xl font-display font-bold mb-12 text-secondary">
-                            Descripció
-                        </h2>
-
-                        <div className="space-y-8 text-on-surface-variant text-lg leading-relaxed">
-
-                            <p>
-                                {joc?.descripcio}
+                        <div className="p-6 rounded-2xl bg-surface-container border border-outline-variant/10">
+                            <p className="text-xs uppercase tracking-widest text-on-surface-variant">
+                                Categoria
                             </p>
-
-                            <div className="p-8 bg-surface-container rounded-xl border-l-4 border-primary">
-                                <h3 className="text-on-surface font-bold mb-2">
-                                    Informació del joc
-                                </h3>
-                                <p className="text-sm">
-                                    Categoria: {joc?.category?.nom || "Sense categoria"}
-                                </p>
-                            </div>
-
+                            <p className="text-lg font-bold">
+                                {category || "—"}
+                            </p>
                         </div>
-                    </div>
 
-                    {/* SISTEMA (ESTÀTIC PER ARA, OPCIONAL FUTUR) */}
-                    <div className="bg-surface-container-high p-12 rounded-2xl border border-outline-variant/10">
+                        <div className="p-6 rounded-2xl bg-surface-container border border-outline-variant/10">
+                            <p className="text-xs uppercase tracking-widest text-on-surface-variant">
+                                Preu
+                            </p>
+                            <p className="text-lg font-bold text-primary">
+                                {price.toFixed(2)} €
+                            </p>
+                        </div>
 
-                        <h2 className="text-2xl font-display font-bold mb-8 flex items-center gap-3">
-                            <span className="material-symbols-outlined text-primary">
-                                terminal
-                            </span>
-                            Requisits del Sistema
-                        </h2>
-
-                        <p className="text-sm text-on-surface-variant">
-                            Aquesta informació encara és estàtica (pots afegir-la a la BD després).
-                        </p>
+                        <div className="p-6 rounded-2xl bg-surface-container border border-outline-variant/10">
+                            <p className="text-xs uppercase tracking-widest text-on-surface-variant">
+                                Publicació
+                            </p>
+                            <p className="text-lg font-bold">
+                                {joc?.data_publicacio
+                                    ? new Date(joc.data_publicacio).getFullYear()
+                                    : "—"}
+                            </p>
+                        </div>
 
                     </div>
                 </div>
             </section>
 
-            {/* GALLERY (DINÀMICA SIMPLE PER ARA) */}
-            <section className="max-w-7xl mx-auto px-8 py-32">
-
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-
-                    <div className="md:col-span-8 rounded-xl overflow-hidden">
-                        <img
-                            className="w-full h-full object-cover"
-                            src={joc?.imatge}
-                            alt={joc?.nom}
+            {/* FLOATING CART BUTTON */}
+            <div className="fixed bottom-6 right-6 z-50">
+                <Link
+                    href="/carret"
+                    className="flex items-center gap-3 px-5 py-4 rounded-2xl bg-primary text-black font-black shadow-2xl hover:scale-105 active:scale-95 transition-all relative"
+                >
+                    {/* HEROICON (SIN CAMBIOS) */}
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={2}
+                        stroke="currentColor"
+                        className="w-6 h-6"
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
                         />
-                    </div>
+                    </svg>
 
-                    <div className="md:col-span-4 rounded-xl overflow-hidden">
-                        <img
-                            className="w-full h-full object-cover"
-                            src={joc?.imatge}
-                            alt={joc?.nom}
-                        />
-                    </div>
+                    Carret
 
-                </div>
-            </section>
+                    {/* COUNTER */}
+                    {cartCount > 0 && (
+                        <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">
+                            {cartCount}
+                        </span>
+                    )}
+                </Link>
+            </div>
 
         </main>
     );

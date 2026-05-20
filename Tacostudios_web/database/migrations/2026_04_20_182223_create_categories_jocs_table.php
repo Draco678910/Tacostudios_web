@@ -10,7 +10,6 @@ return new class extends Migration {
         Schema::create('categories_jocs', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
-            $table->string('color')->nullable();
             $table->timestamps();
         });
     }

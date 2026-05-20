@@ -12,7 +12,6 @@ class CategorySeeder extends Seeder
         DB::table('categories_jocs')->insert([
             [
                 'nom' => 'Acció',
-                'color' => '#ff0000',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]
