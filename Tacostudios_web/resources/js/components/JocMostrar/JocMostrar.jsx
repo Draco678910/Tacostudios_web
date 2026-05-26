@@ -54,7 +54,9 @@ export default function JocMostrar({ joc }) {
 
                         {/* DESCRIPTION */}
                         <p className="text-lg md:text-xl text-white/70 max-w-2xl">
-                            {joc?.descripcio?.slice(0, 220)}
+                            {joc?.descripcio?.length > 20
+                                ? joc.descripcio.slice(0, 20) + "..."
+                                : joc?.descripcio}
                         </p>
 
                         {/* CTA */}
@@ -89,7 +91,7 @@ export default function JocMostrar({ joc }) {
                             Sobre el joc
                         </h2>
 
-                        <p className="text-on-surface-variant text-lg leading-relaxed">
+                        <p className="text-on-surface-variant text-lg leading-relaxed wrap-break-word max-w-[80ch]">
                             {joc?.descripcio}
                         </p>
                     </div>

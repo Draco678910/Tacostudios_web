@@ -30,7 +30,7 @@ export default function ShowNoticia() {
                 />
 
                 {/* OVERLAY */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent" />
 
                 {/* CONTENT */}
                 <div className="absolute bottom-0 left-0 w-full p-10">
@@ -54,12 +54,12 @@ export default function ShowNoticia() {
             </header>
 
             {/* CONTENT */}
-            <section className="max-w-3xl mx-auto px-6 py-16">
-
-                <p className="text-lg text-on-surface-variant leading-relaxed whitespace-pre-line">
-                    {noticia.contingut}
-                </p>
-
+            <section className="flex justify-center px-4 py-16">
+                <div className="max-w-3xl w-full">
+                    <p className="text-center text-lg leading-8 wrap-break-word whitespace-pre-line">
+                        {noticia.contingut}
+                    </p>
+                </div>
             </section>
 
         </main>

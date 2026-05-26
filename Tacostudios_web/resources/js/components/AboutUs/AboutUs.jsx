@@ -44,6 +44,7 @@ export default function AboutUs() {
                         Busquem crear projectes que tinguin caràcter i deixin empremta.
                     </p>
                 </div>
+                <div></div>
             </section>
         </main>
     )

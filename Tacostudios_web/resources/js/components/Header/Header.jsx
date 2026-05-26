@@ -3,148 +3,175 @@ import { usePage } from '@inertiajs/react';
 import { router } from '@inertiajs/react';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import AppLogoIcon from '@/components/prefets/app-logo-icon';
+import { useState } from "react";
+import { Menu as MenuIcon, X } from "lucide-react";
 
 export default function Header() {
     const { auth } = usePage().props;
     const user = auth?.user;
-
+    const [open, setOpen] = useState(false);
     function logout() {
         router.post('/logout');
     }
 
     return (
-        <nav className="fixed top-0 w-full z-50 bg-black/60 backdrop-blur-xl no-border transition-colors duration-300 shadow-[0_20px_40px_rgba(199,153,255,0.08)]">
-            
-            <div className="grid grid-cols-3 items-center px-8 h-20 w-full">
+        <>
+            <nav className="fixed top-0 left-0 w-full z-50 border-b border-white/10 bg-black/70 backdrop-blur-xl">
+                <div className="max-w-7xl mx-auto h-20 px-6 flex items-center justify-between">
 
-                {/* LOGO */}
-                <div className="flex justify-start">
-                    <a href="/">
+                    {/* LOGO */}
+                    <a href="/" className="flex items-center w-2/6">
                         <AppLogoIcon />
                     </a>
-                </div>
 
-                {/* NAVIGATION */}
-                <div className="hidden md:flex justify-center items-center gap-10 font-['Space_Grotesk'] tracking-tight">
-                    <a className="text-white/70 hover:text-white transition-all duration-200" href="/">
-                        Pagina Principal
-                    </a>
+                    {/* DESKTOP NAV */}
+                    <div className="hidden md:flex items-center gap-8 font-['Space_Grotesk']">
+                        <a className="text-sm text-white/70 hover:text-white transition-colors" href="/">
+                            Pagina Principal
+                        </a>
 
-                    <a className="text-white/70 hover:text-white transition-all duration-200" href="/botiga">
-                        Botiga
-                    </a>
+                        <a className="text-sm text-white/70 hover:text-white transition-colors" href="/botiga">
+                            Botiga
+                        </a>
 
-                    <a className="text-white/70 hover:text-white transition-all duration-200" href="/noticias">
-                        Noticies
-                    </a>
+                        <a className="text-sm text-white/70 hover:text-white transition-colors" href="/noticias">
+                            Noticies
+                        </a>
 
-                    <a className="text-white/70 hover:text-white transition-all duration-200" href="/aboutus">
-                        Sobre nosaltres
-                    </a>
-                </div>
+                        <a className="text-sm text-white/70 hover:text-white transition-colors" href="/aboutus">
+                            Sobre nosaltres
+                        </a>
+                    </div>
 
-                {/* USER / AUTH */}
-                <div className="flex justify-end">
-                    {user ? (
-                        <div className="flex items-center gap-6 flex-wrap">
-                            <Menu as="div" className="relative inline-block">
+                    {/* RIGHT SIDE */}
+                    <div className="flex items-center gap-4">
 
-                                <MenuButton className="inline-flex justify-center gap-x-1.5 bg-white/10 px-3 py-2 text-sm font-semibold inset-ring-1 inset-ring-white/5 text-white/70 hover:bg-white/5 rounded-lg hover:animate-rainbowGlow transition-shadow duration-500 active:scale-90">
+                        {/* MOBILE BUTTON */}
+                        <button
+                            onClick={() => setOpen(true)}
+                            className="md:hidden text-white"
+                        >
+                            <MenuIcon size={28} />
+                        </button>
+
+                        {/* AUTH */}
+                        {user ? (
+                            <Menu as="div" className="relative">
+                                <MenuButton className="rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 hover:bg-white/10 transition-all">
                                     {user.name}
                                 </MenuButton>
 
-                                <MenuItems
-                                    transition
-                                    className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-gray-800 outline-1 -outline-offset-1 outline-white/10 transition data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
-                                >
-                                    <div className="py-1">
+                                <MenuItems className="absolute right-0 mt-3 w-56 rounded-2xl border border-white/10 bg-zinc-900/95 backdrop-blur-xl shadow-2xl overflow-hidden">
 
+                                    <MenuItem>
+                                        <a
+                                            href="/user-menu"
+                                            className="block px-4 py-3 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors"
+                                        >
+                                            Opcions del compte
+                                        </a>
+                                    </MenuItem>
+
+                                    <MenuItem>
+                                        <a
+                                            href="/biblioteca"
+                                            className="block px-4 py-3 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors"
+                                        >
+                                            Biblioteca
+                                        </a>
+                                    </MenuItem>
+
+                                    {user.is_admin && (
                                         <MenuItem>
                                             <a
-                                                href="/user-menu"
-                                                className="px-4 py-2 text-sm text-gray-300 data-focus:bg-white/5 data-focus:text-white data-focus:outline-hidden flex flex-wrap"
+                                                href="/admin"
+                                                className="block px-4 py-3 text-sm text-white/70 hover:bg-white/5 hover:text-white transition-colors"
                                             >
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                                </svg>
-
-                                                <p className='ml-1'>
-                                                    Opcions del compte
-                                                </p>
+                                                Administració
                                             </a>
                                         </MenuItem>
+                                    )}
 
-                                        <MenuItem>
-                                            <a
-                                                href="/biblioteca"
-                                                className="px-4 py-2 text-sm text-gray-300 data-focus:bg-white/5 data-focus:text-white data-focus:outline-hidden flex flex-wrap"
-                                            >
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0ZM3.75 12h.007v.008H3.75V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm-.375 5.25h.007v.008H3.75v-.008Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
-                                                </svg>
-
-                                                <p className='ml-1'>
-                                                    Biblioteca
-                                                </p>
-                                            </a>
-                                        </MenuItem>
-
-                                        <MenuItem>
-                                            <button
-                                                onClick={logout}
-                                                type="submit"
-                                                className="flex flex-wrap w-full px-4 py-2 text-left text-sm text-gray-300 data-focus:bg-white/5 data-focus:text-white data-focus:outline-hidden"
-                                            >
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
-                                                </svg>
-
-                                                <p className='ml-1'>
-                                                    Tancar sesió
-                                                </p>
-                                            </button>
-                                        </MenuItem>
-
-                                        {user.is_admin && (
-                                            <MenuItem>
-                                                <a
-                                                    href="/admin"
-                                                    className="px-4 py-2 text-sm text-gray-300 data-focus:bg-white/5 data-focus:text-white data-focus:outline-hidden flex flex-wrap"
-                                                >
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0ZM3.75 12h.007v.008H3.75V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm-.375 5.25h.007v.008H3.75v-.008Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
-                                                    </svg>
-
-                                                    <p className='ml-1'>
-                                                        Administración
-                                                    </p>
-                                                </a>
-                                            </MenuItem>
-                                        )}
-
-                                    </div>
+                                    <MenuItem>
+                                        <button
+                                            onClick={logout}
+                                            className="w-full text-left px-4 py-3 text-sm text-red-400 hover:bg-red-500/10 transition-colors"
+                                        >
+                                            Tancar sessió
+                                        </button>
+                                    </MenuItem>
                                 </MenuItems>
                             </Menu>
-                        </div>
-                    ) : (
-                        <div className="flex items-center gap-5">
-                            <a
-                                href="/login"
-                                className='bg-white/10 px-3 py-2 text-sm font-semibold inset-ring-1 inset-ring-white/5 text-white/70 hover:bg-white/5 rounded-lg hover:animate-rainbowGlow transition-shadow duration-500 active:scale-90'
-                            >
-                                <p>Iniciar sesió</p>
-                            </a>
+                        ) : (
+                            <div className="hidden md:flex items-center gap-3">
+                                <a
+                                    href="/login"
+                                    className="rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 hover:bg-white/10 transition-all"
+                                >
+                                    Iniciar sessió
+                                </a>
 
-                            <a
-                                href="/register"
-                                className='bg-white/10 px-3 py-2 text-sm font-semibold inset-ring-1 inset-ring-white/5 text-white/70 hover:bg-white/5 rounded-lg hover:animate-rainbowGlow transition-shadow duration-500 active:scale-90'
-                            >
-                                <p>Registrar-se</p>
-                            </a>
-                        </div>
-                    )}
+                                <a
+                                    href="/register"
+                                    className="rounded-xl bg-white text-black px-4 py-2 text-sm font-medium hover:opacity-90 transition-all"
+                                >
+                                    Registrar-se
+                                </a>
+                            </div>
+                        )}
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
+
+            {/* MOBILE MENU */}
+            {open && (
+                <div className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex flex-col">
+
+                    {/* TOP BAR */}
+                    <div className="flex items-center justify-between px-6 h-20 border-b border-white/10">
+                        <AppLogoIcon />
+
+                        <button
+                            onClick={() => setOpen(false)}
+                            className="text-white"
+                        >
+                            <X size={30} />
+                        </button>
+                    </div>
+
+                    {/* LINKS */}
+                    <div className="flex flex-col items-center justify-center flex-1 gap-8 font-['Space_Grotesk']">
+
+                        <a
+                            href="/"
+                            className="text-3xl font-semibold text-white/80 hover:text-white transition-colors"
+                        >
+                            Pagina Principal
+                        </a>
+
+                        <a
+                            href="/botiga"
+                            className="text-3xl font-semibold text-white/80 hover:text-white transition-colors"
+                        >
+                            Botiga
+                        </a>
+
+                        <a
+                            href="/noticias"
+                            className="text-3xl font-semibold text-white/80 hover:text-white transition-colors"
+                        >
+                            Noticies
+                        </a>
+
+                        <a
+                            href="/aboutus"
+                            className="text-3xl font-semibold text-white/80 hover:text-white transition-colors"
+                        >
+                            Sobre nosaltres
+                        </a>
+                    </div>
+                </div>
+            )}
+        </>
     );
 }

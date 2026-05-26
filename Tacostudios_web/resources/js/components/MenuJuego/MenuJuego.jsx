@@ -17,7 +17,7 @@ export default function MenuJuego({ joc }) {
         })
     }
 
-    
+
     const normalizeUrl = (value) => {
         if (!value) return null
 
@@ -34,41 +34,23 @@ export default function MenuJuego({ joc }) {
         return null
     }
 
-    const playGame = (e) => {
-        e?.preventDefault?.()
-        e?.stopPropagation?.()
+        const getGameLink = () => {
+    const launch = joc?.arxiu_enllac;
 
-        console.log("🎮 joc:", joc)
-        console.log("🎮 arxiu_enllac:", joc?.arxiu_enllac)
+    if (!launch) return "#";
 
-        const launch = joc?.arxiu_enllac
+    let target = String(launch).trim();
 
-        if (!launch) {
-            alert("Aquest joc no té cap enllaç o fitxer assignat.")
-            return
-        }
-
-        const url = normalizeUrl(launch)
-
-        // 🌍 EXTERNO
-        if (url) {
-            const win = window.open(url, '_blank', 'noopener,noreferrer')
-            if (!win) {
-                alert("El navegador ha bloquejat la finestra emergente")
-            }
-            return
-        }
-
-        // 📦 ARCHIVO LOCAL
-        const file = String(launch).startsWith('/storage/')
-            ? launch
-            : `/storage/${launch}`
-
-        const win = window.open(file, '_blank', 'noopener,noreferrer')
-        if (!win) {
-            alert("El navegador ha bloqueado la apertura del archivo")
-        }
+    // Si no tiene protocolo, añadir https://
+    if (
+        !target.startsWith("http://") &&
+        !target.startsWith("https://")
+    ) {
+        target = `https://${target}`;
     }
+
+    return target;
+};
 
     return (
         <main className="pt-0">
@@ -77,7 +59,7 @@ export default function MenuJuego({ joc }) {
             <section className="relative min-h-[600px] flex items-end pb-24 px-8 md:px-16 overflow-hidden rounded-2xl">
 
                 <div className="absolute inset-0 z-0">
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-10" />
+                    <div className="absolute inset-0 bg-linear-to-t from-black via-black/40 to-transparent z-10" />
 
                     <img
                         src={joc?.imatge || "https://via.placeholder.com/1200"}
@@ -95,16 +77,19 @@ export default function MenuJuego({ joc }) {
                     <div className="flex flex-wrap gap-4">
 
                         {inLibrary && (
-                            <button
-                                onClick={playGame}
-                                className="px-8 py-3 bg-primary text-black font-bold rounded-xl flex items-center gap-2 hover:scale-105 transition"
-                            >
-                                <span className="material-symbols-outlined">
-                                    play_arrow
-                                </span>
-                                Jugar
-                            </button>
-                        )}
+    <a
+        href={getGameLink()}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="px-8 py-3 bg-primary text-black font-bold rounded-xl flex items-center gap-2 hover:scale-105 transition"
+    >
+        <span className="material-symbols-outlined">
+            play_arrow
+        </span>
+
+        Jugar
+    </a>
+)}
 
                         {inLibrary && (
                             <button
@@ -132,7 +117,7 @@ export default function MenuJuego({ joc }) {
 
                     <div className="bg-surface-container p-6 rounded-2xl border border-white/5">
                         <h2 className="text-2xl font-bold mb-4">Descripció</h2>
-                        <p className="text-on-surface-variant leading-relaxed">
+                        <p className="max-w-full wrap-break-word whitespace-normal text-on-surface-variant leading-relaxed">
                             {joc?.descripcio || "Sense descripció disponible."}
                         </p>
                     </div>
